@@ -17,16 +17,6 @@ script:
 before_deploy:
 - ./scripts/prepare-deployment.sh
 
-#deploy:
-#- skip_cleanup: true
-#  provider: firebase
-#  except: functions
-#  on:
-#    branch: develop
-#  token:
-#    secure: "$FIREBASE_SECRET"
-#  project: "fir-project-3d2a4"
-#
 after_success:
   - ./scripts/prepare-deployment.sh
   - firebase deploy --project "fir-project-3d2a4" --token $FIREBASE_SECRET --except functions
