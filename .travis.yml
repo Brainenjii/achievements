@@ -6,17 +6,5 @@ branches:
  only:
   - develop
 
-install:
-- npm install -g firebase-tools
-- npm install
-
-script:
-- npm run-script build
-- npm run-script coverage
-
-before_deploy:
-- ./scripts/prepare-deployment.sh
-
 after_success:
-  - ./scripts/prepare-deployment.sh
-  - firebase deploy --project "fir-project-3d2a4" --token $FIREBASE_SECRET --except functions
+  - ./scripts/do-deploy.sh
